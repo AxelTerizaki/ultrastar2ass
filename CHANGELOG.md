@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.6
+
+- Forgot to include dist/
+
 ## 1.0.5
 
 - First NPM version
