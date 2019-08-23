@@ -29,6 +29,7 @@ export function convertToASS(time: string, options: SyllabesConfig): string {
 		dialogue.value.Effect = 'karaoke';
 		comment.value.Text = ass.commentScript + ASSLine.join('');
 		comment.value.Effect = 'fx';
+		comment.key = 'Comment';
 		// Add it to our kara
 		comments.push(clone(comment));
 		dialogues.push(clone(dialogue));
