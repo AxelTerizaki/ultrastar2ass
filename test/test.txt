@@ -1,0 +1,63 @@
+#TITLE:Bloody Stream (TV)
+#ARTIST:Coda
+#LANGUAGE:Japanese
+#YEAR:2013
+#CREATOR:asdfer
+#MP3:Coda - Bloody Stream (TV).mp3
+#COVER:Coda - Bloody Stream (TV).jpg
+#VIDEO:Coda - Bloody Stream (TV).mp4
+#BPM:466,4
+#GAP:6750
+: 0 10 -5 Shi
+: 14 10 -5 ji
+: 28 18 -6 ma
+: 50 40 -5  no
+: 113 10 -9  so
+: 127 10 -7 ko
+: 141 18 -6  ka
+: 163 50 -5 ra
+- 223
+: 245 5 -5 Me
+: 253 5 0 za
+: 261 4 -5 me
+: 267 5 -7 ru
+: 274 2 -9  so
+: 278 5 -7 no
+: 285 4 -9  ha
+: 291 2 -12 shi
+: 295 5 -9 ra
+: 303 2 -12  ta
+: 307 20 -9 chi
+- 337
+: 345 5 -9 To
+: 353 3 -7 ki
+: 359 5 -9  wo
+: 367 18 -6  ko
+: 388 45 -5 e
+- 443
+: 452 10 -5 Shi
+: 466 10 -5 n
+: 480 18 -6 ku
+: 502 40 -5  no
+: 565 10 -9  chi
+: 579 10 -7 shi
+: 593 18 -6 o
+: 615 50 -5  ga
+- 675
+: 697 6 -5 Ta
+* 705 12 0 chi
+: 719 2 0 a
+: 723 6 2 ga
+* 731 8 3 ru
+* 741 6 2  yu
+: 749 4 0 u
+: 755 2 2 ki
+: 759 25 0  wo
+- 795
+: 799 4 -9 Hi
+: 805 4 -9 ki
+: 811 4 -9 a
+: 819 5 -2 wa
+: 827 2 -4 se
+: 831 44 -5 ru
+E
