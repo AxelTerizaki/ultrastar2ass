@@ -129,7 +129,7 @@ export default class UltrastarParser {
 			// Syllable line
 			if ([':', '*', 'F'].indexOf(line[0]) > -1) {
 				// Regex parsing of the line
-				var matches = line.match(/^[:*F] (\d+) (\d+) (-?\d+) (.+)/);
+				var matches = line.match(/^[:*F] (-?\d+) (\d+) (-?\d+) (.+)/);
 
 				// Ignore the line if it's invalid
 				if (matches == null || matches.length == 0) {
