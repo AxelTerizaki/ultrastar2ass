@@ -76,7 +76,6 @@ export function convertToASS(time: string, options: SyllabesConfig): string {
 }
 
 async function mainCLI() {
-	process.argv[2] = 'test/duet.txt'
 	if (!process.argv[2]) {
 		throw `Ultrastar2ass - Convert Ultrastar karaoke to ASS file
 		Usage: ultrastar2ass myfile.txt
