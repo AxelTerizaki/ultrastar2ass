@@ -5,41 +5,78 @@ import stringify from 'ass-stringify';
 import { SyllabesConfig } from './types';
 const ass = require('./assTemplate');
 
+function generateASSLine(line: any, styles: any, duet: boolean) {
+	const ASSLine = [];
+	let startMs = line.start - 1000;
+	if (startMs < 0) startMs = 0;
+	const stopMs = line.end + 100;
+	line.syllables.forEach((syl: any) => ASSLine.push('{\\k' + Math.floor(syl.duration / 10) + '}' + syl.text));
+	const dialogue = clone(ass.dialogue);
+	const comment = clone(ass.dialogue);
+	dialogue.value.Start = comment.value.Start = msToAss(startMs);
+	dialogue.value.End = comment.value.End = msToAss(stopMs);
+	dialogue.value.Text = ass.dialogueScript + ASSLine.join('');
+	dialogue.value.Effect = 'karaoke';
+	dialogue.value.Style = duet
+		? styles.body[2].value.Name
+		: styles.body[1].value.Name;
+	comment.value.Text = ass.commentScript + ASSLine.join('');
+	comment.value.Effect = 'fx';
+	comment.key = 'Comment';
+	comment.value.Style = duet
+		? styles.body[2].value.Name
+		: styles.body[1].value.Name;
+	return {
+		dialogue,
+		comment
+	}
+}
+
+function sortStartTime(a: any, b: any) {
+	if (a.value.Start < b.value.Start) return -1;
+	if (a.value.Start > b.value.Start) return 1;
+	return 0;
+}
+
 /** Convert Ultrastar data (txt) to ASS */
 export function convertToASS(time: string, options: SyllabesConfig): string {
 	const ultrastar = new UltrastarParser(options);
 	const kara = ultrastar.parse(time);
 	const dialogues = [];
 	const comments = [];
+	const styles = clone(ass.styles);
+	if (kara.meta.duet) {
+		styles.body[1].value.Name = kara.meta.duetsingerp1 || 'Default';
+		styles.body.push(clone(styles.body[1]));
+		styles.body[2].value.Name = kara.meta.duetsingerp2 || 'Default2';
+		styles.body[2].value.SecondaryColour = '&H000F4BE1';
+	}
 	const script = clone(ass.dialogue);
 	script.value.Effect = ass.scriptFX;
 	script.value.Text = ass.script;
+	script.key = 'Comment';
 	comments.push(script);
 	for (const line of kara.track) {
-		const ASSLine = [];
-		let startMs = line.start - 1000;
-		if (startMs < 0) startMs = 0;
-		const stopMs = line.end + 100;
-		line.syllables.forEach((syl: any) => ASSLine.push('{\\k' + Math.floor(syl.duration / 10) + '}' + syl.text));
-		const dialogue = clone(ass.dialogue);
-		const comment = clone(ass.dialogue);
-		dialogue.value.Start = comment.value.Start = msToAss(startMs);
-		dialogue.value.End = comment.value.End = msToAss(stopMs);
-		dialogue.value.Text = ass.dialogueScript + ASSLine.join('');
-		dialogue.value.Effect = 'karaoke';
-		comment.value.Text = ass.commentScript + ASSLine.join('');
-		comment.value.Effect = 'fx';
-		// Add it to our kara
-		comments.push(clone(comment));
-		dialogues.push(clone(dialogue));
+		const ASSLines = generateASSLine(line, styles, false);
+		comments.push(clone(ASSLines.comment));
+		dialogues.push(clone(ASSLines.dialogue));
 	}
+	if (kara.meta.duet) {
+		for (const line of kara.track_duet) {
+			const ASSLines = generateASSLine(line, styles, true);
+			comments.push(clone(ASSLines.comment));
+			dialogues.push(clone(ASSLines.dialogue));
+		}
+	}
+	comments.sort(sortStartTime);
+	dialogues.sort(sortStartTime);
 	const events = clone(ass.events);
 	events.body = events.body.concat(comments, dialogues);
-	return stringify([ass.scriptInfo, ass.styles, events]);
+	return stringify([ass.scriptInfo, styles, events]);
 }
 
 async function mainCLI() {
-	process.argv[2] = 'test.txt';
+	process.argv[2] = 'test/test2.txt'
 	if (!process.argv[2]) {
 		throw `Ultrastar2ass - Convert Ultrastar karaoke to ASS file
 		Usage: ultrastar2ass myfile.txt
