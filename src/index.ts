@@ -14,6 +14,7 @@ export function convertToASS(time: string, options: SyllabesConfig): string {
 	const script = clone(ass.dialogue);
 	script.value.Effect = ass.scriptFX;
 	script.value.Text = ass.script;
+	script.key = 'Comment';
 	comments.push(script);
 	for (const line of kara.track) {
 		const ASSLine = [];
