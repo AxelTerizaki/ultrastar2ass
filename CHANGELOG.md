@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.5
+
+- First NPM version
+
 ## 1.0.4
 
 - Fix \k90 ASS tag not suitable for a 1000ms delay (my bad)
