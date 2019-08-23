@@ -115,8 +115,8 @@ export const dialogue = {
 	key: 'Dialogue',
 	value: {
 		Layer: '1',
-		Start: '0:00:00.00',
-		End: '0:00:00.00',
+		Start: '00:00:00.00',
+		End: '00:00:00.00',
 		Style: 'Default',
 		Name: '',
 		MarginL: '0',
