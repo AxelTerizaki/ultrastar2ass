@@ -6,10 +6,11 @@ export default class UltrastarParser {
 	meta: any;
 	track: any;
 	track_duet: any;
+	first_pass: boolean; // only to keep track of first pass if we have a spitted start time with the first sentence found
 
 	constructor(config: SyllabesConfig) {
 		this.config = config;
-
+        
 		this.meta = {
 			title: null,
 			artist: null,
@@ -20,6 +21,7 @@ export default class UltrastarParser {
 		};
 		this.track = [];
 		this.track_duet = [];
+		this.first_pass = true;
 	}
 
 	/**
@@ -202,8 +204,10 @@ export default class UltrastarParser {
 				// Fix the first sentence start if the offset is negative
 				if (this.meta.gap < 0 && currentStart < 0) {
 					currentStart = 0;
+				} else if(null !== currentStart && (0 < syllables.length) && this.first_pass) { // we may need an additional offset - just move to the very first part if we have one
+					currentStart = Math.max(currentStart, syllables[0].start);
 				}
-
+                
 				// Create a new sentence
 				var sentence = this.makeSentence(sentenceID, syllables, currentStart, currentEnd, previousEnd);
 
@@ -223,7 +227,8 @@ export default class UltrastarParser {
 						currentStart = Math.floor(this.config.offset + (beatsCount + parseInt(matches[1])) * beatDuration);
 						beatsCount += parseInt(matches[1]);
 					}
-				}
+				} // now, we *MAY* have computed the first offset : we do not need to keep this, ever
+				this.first_pass = false;
 
 				// Add the sentence to the current track
 				if (trackID == 1) {
@@ -289,7 +294,7 @@ export default class UltrastarParser {
 
 		// Set the duration with start and end
 		sentence.duration = sentence.end - sentence.start;
-
+        
 		return sentence;
 	}
 }
