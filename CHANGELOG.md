@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.7
+
+- Fix function types
+
 ## 1.0.6
 
 - Forgot to include dist/
