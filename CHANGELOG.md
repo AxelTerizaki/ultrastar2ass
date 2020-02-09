@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.0.8
+
+- Fixed default font and color
+- Fixed karaoke and comment inversion for fx
+
 ## 1.0.7
 
 - Fix function types
