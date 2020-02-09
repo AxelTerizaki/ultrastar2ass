@@ -64,7 +64,7 @@ export const styles = {
 			value: {
 				'Name': 'Default',
 				'Fontname': 'Arial',
-				'Fontsize': '20',
+				'Fontsize': '24',
 				'PrimaryColour': '&H00FFFFFF',
 				'SecondaryColour': '&H000088EF',
 				'OutlineColour': '&H00000000',
@@ -78,7 +78,7 @@ export const styles = {
 				'Spacing': '0',
 				'Angle': '0',
 				'BorderStyle': '1',
-				'Outline': '3',
+				'Outline': '1.5',
 				'Shadow': '0',
 				'Alignment': '8',
 				'MarginL': '10',
