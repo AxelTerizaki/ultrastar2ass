@@ -1,6 +1,6 @@
 {
   "name": "ultrastar2ass",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Convert Ultrastar karaoke files to ASS files",
   "main": "dist/index.js",
   "types": "src/types.d.ts",

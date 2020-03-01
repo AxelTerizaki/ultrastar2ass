@@ -14,7 +14,7 @@ export const asyncWriteFile = (...args: any) => passThroughFunction(writeFile, a
 export function msToAss(ms: number): string {
 	const date = new Date(ms);
 	const hour = date.getUTCHours();
-	const hourStr = `${hour}`.padStart(2, '0');
+	const hourStr = `${hour}`.padStart(1, '0');
 	const min  = date.getUTCMinutes();
 	const minStr = `${min}`.padStart(2, '0');
 	const sec  = date.getUTCSeconds();

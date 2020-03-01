@@ -13,14 +13,16 @@ function generateASSLine(line: any, styles: any, duet: boolean) {
 	line.syllables.forEach((syl: any) => ASSLine.push('{\\k' + Math.floor(syl.duration / 10) + '}' + syl.text));
 	const dialogue = clone(ass.dialogue);
 	const comment = clone(ass.dialogue);
-	dialogue.value.Start = comment.value.Start = msToAss(startMs);
-	dialogue.value.End = comment.value.End = msToAss(stopMs);
+	dialogue.value.Start = msToAss(startMs);
+	comment.value.Start = msToAss(startMs + 1000);
+	dialogue.value.End = msToAss(stopMs);
+	comment.value.End = msToAss(stopMs);
 	dialogue.value.Text = ass.dialogueScript + ASSLine.join('');
 	dialogue.value.Effect = 'fx';
 	dialogue.value.Style = duet
 		? styles.body[2].value.Name
 		: styles.body[1].value.Name;
-	comment.value.Text = ass.commentScript + ASSLine.join('');
+	comment.value.Text = ASSLine.join('');
 	comment.value.Effect = 'karaoke';
 	comment.key = 'Comment';
 	comment.value.Style = duet

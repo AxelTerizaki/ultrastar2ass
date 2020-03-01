@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.0.9
+
+- Fixed \k100 to \k90, not on comment lines anymore
+- Fixed hours being on one character instead of two
+- Fixed fad+k effect on beginning of line.
+
 ## 1.0.8
 
 - Fixed default font and color
