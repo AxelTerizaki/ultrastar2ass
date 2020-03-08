@@ -1,6 +1,6 @@
 {
   "name": "ultrastar2ass",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Convert Ultrastar karaoke files to ASS files",
   "main": "dist/index.js",
   "types": "src/types.d.ts",
@@ -17,6 +17,9 @@
     "ultrastar"
   ],
   "author": "Guillaume Lebigot <axel@teri-chan.net>",
+  "contributors": [
+      "Florent Berthelot (@Aeden_)"
+      ],
   "license": "MIT",
   "bugs": {
     "url": "https://lab.shelter.moe/axelterizaki/ultrastar2ass/issues",
