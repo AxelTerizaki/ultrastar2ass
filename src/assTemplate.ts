@@ -127,6 +127,6 @@ export const dialogue = {
 	}
 };
 
-export const dialogueScript = '{\\k90\\fad(300,200)}';
+export const dialogueScript = '\\fad(300,200)}';
 export const scriptFX = 'template pre-line all keeptags';
-export const script = '!retime("line",$start < 0 and -$start or -0,200)!{!$start < 0 and "\\\\k" .. ($start/10) or "\\\\k0"!\\fad(!$start < 0 and $start or 300!,200)}';
+export const script = '!retime("line",$start < 900 and -$start or -900,200)!{!$start < 900 and "\\k" .. ($start/10) or "\\k90"!\fad(!$start < 900 and $start or 300!,200)}';

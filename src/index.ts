@@ -7,17 +7,16 @@ const ass = require('./assTemplate');
 
 function generateASSLine(line: any, styles: any, duet: boolean) {
 	const ASSLine = [];
-	let startMs = line.start - 1000;
-	if (startMs < 0) startMs = 0;
+	let startMs = line.start;
 	const stopMs = line.end + 100;
 	line.syllables.forEach((syl: any) => ASSLine.push('{\\k' + Math.floor(syl.duration / 10) + '}' + syl.text));
 	const dialogue = clone(ass.dialogue);
 	const comment = clone(ass.dialogue);
-	dialogue.value.Start = msToAss(startMs);
-	comment.value.Start = msToAss(startMs + 1000);
+	dialogue.value.Start = msToAss(startMs - 900 < 0 ? 0 : startMs - 900);
+	comment.value.Start = msToAss(startMs);
 	dialogue.value.End = msToAss(stopMs);
 	comment.value.End = msToAss(stopMs);
-	dialogue.value.Text = ass.dialogueScript + ASSLine.join('');
+	dialogue.value.Text = '{\\k'+(startMs - 900 < 0 ? (900-startMs)/10 : 100) + ass.dialogueScript + ASSLine.join('');
 	dialogue.value.Effect = 'fx';
 	dialogue.value.Style = duet
 		? styles.body[2].value.Name
