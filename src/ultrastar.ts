@@ -220,12 +220,12 @@ export default class UltrastarParser {
 				previousEnd = sentence.end;
 
 				// Save the start time of the next sentence if it's present on the line, with absolute or relative beats
-				if (matches[1] !== undefined) {
+				if (matches[1]) {
 					if (!relative) {
-						currentStart = Math.floor(this.config.offset + parseInt(matches[1]) * beatDuration);
+						currentStart = Math.floor((this.config.offset ? this.config.offset : 0) + parseInt(matches[1]) * beatDuration);
 						beatsCount = parseInt(matches[1]);
 					} else {
-						currentStart = Math.floor(this.config.offset + (beatsCount + parseInt(matches[1])) * beatDuration);
+						currentStart = Math.floor((this.config.offset ? this.config.offset : 0) + (beatsCount + parseInt(matches[1])) * beatDuration);
 						beatsCount += parseInt(matches[1]);
 					}
 				} // now, we *MAY* have computed the first offset : we do not need to keep this, ever
