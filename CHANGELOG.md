@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.11
+
+- No changes, forgot to tsc --build before npm publish
+
 ## 1.0.10
 
 - Thanks to @Aeden, many fixes have been made to the conversion
