@@ -75,6 +75,7 @@ export default class UltrastarParser {
 
 				// Beat duration calculation from the BPM
 				if (keyword == 'bpm') {
+					// multiple by 4 because a bpm in ultrastar is in fact a quarter beat
 					beatDuration = (60000) / (value * 4);
 				}
 
@@ -181,9 +182,9 @@ export default class UltrastarParser {
 			}
 
 			// New line mark
-			if (line[0] == '-') {
+			if (line[0].indexOf('-') > -1) {
 				// Regex parsing of the line
-				var matches = line.match(/^- (\d+)\s?(\d+)/);
+				var matches = line.match(/^- (\d+)\s?(\d+)?/);
 
 				// Ignore the line if it's invalid
 				if (matches == null || matches.length == 0) {
