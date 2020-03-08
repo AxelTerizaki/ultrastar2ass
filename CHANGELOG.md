@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.10
+
+- Thanks to @Aeden, many fixes have been made to the conversion
+
 ## 1.0.9
 
 - Fixed \k100 to \k90, not on comment lines anymore
