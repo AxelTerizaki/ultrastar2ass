@@ -156,8 +156,9 @@ export default class UltrastarParser {
 					syllable.start = Math.floor(this.meta.gap + (beatsCount + parseInt(matches[0])) * beatDuration);
 				}
 
+				var matchesAfter = lines[i+1].replace(/^\s*/, '').match(/^[:*F-] (-?\d+)/);
 				// Add the duration, end time, pitch
-				syllable.duration = Math.floor(parseInt(matches[1]) * beatDuration);
+				syllable.duration = Math.floor((matchesAfter ? (parseInt(matchesAfter[1])- parseInt(matches[0])) : parseInt(matches[1])) * beatDuration);
 				syllable.end = syllable.start + syllable.duration;
 				syllable.pitch = parseInt(matches[2]);
 
