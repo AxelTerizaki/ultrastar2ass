@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.12
+
+- Fixed syllable duration for good (thanks @Aeden)
+
 ## 1.0.11
 
 - No changes, forgot to tsc --build before npm publish
