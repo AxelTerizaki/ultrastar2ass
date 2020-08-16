@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "types": "src/types.d.ts",
   "bin": {
-    "toyunda2ass": "dist/index.js"
+    "ultrastar2ass": "dist/index.js"
   },
   "scripts": {
     "build": "tsc --build",

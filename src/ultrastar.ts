@@ -185,7 +185,7 @@ export default class UltrastarParser {
 			// New line mark
 			if (line[0].indexOf('-') > -1) {
 				// Regex parsing of the line
-				var matches = line.match(/^- (\d+)\s?(\d+)?/);
+				var matches = line.match(/^- ?(\d+)\s?(\d+)?/);
 
 				// Ignore the line if it's invalid
 				if (matches == null || matches.length == 0) {
@@ -193,7 +193,12 @@ export default class UltrastarParser {
 				}
 
 				// Split of the regex result
-				matches = matches[0].split(' ').splice(1);
+				matches = matches[0].split(' ');
+				if (matches[0].length > 1) {
+					matches[0] = matches[0].substr(1, matches[0].length);
+				} else {
+					matches = matches.splice(1);
+				}
 				var currentEnd = null;
 
 				// Add the end time of the sentence, with absolute or relative beats
