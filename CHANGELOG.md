@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.13
+
+- Fixed some cases where the ultrastar lyrics file was malformed. Something the original game permits but we didn't (thanks @Aeden)
+
 ## 1.0.12
 
 - Fixed syllable duration for good (thanks @Aeden)
