@@ -130,9 +130,9 @@ export default class UltrastarParser {
 			}
 
 			// Syllable line
-			if ([':', '*', 'F'].indexOf(line[0]) > -1) {
+			if ([':', '*', 'F', 'R', 'G'].indexOf(line[0]) > -1) {
 				// Regex parsing of the line
-				var matches = line.match(/^[:*F] (-?\d+) (\d+) (-?\d+) (.+)/);
+				var matches = line.match(/^[:*FRG] (-?\d+) (\d+) (-?\d+) (.+)/);
 
 				// Ignore the line if it's invalid
 				if (matches == null || matches.length == 0) {
@@ -169,10 +169,12 @@ export default class UltrastarParser {
 				}
 
 				// Change the type for special syllables
-				if (line[0] == '*') {
+				if (line[0] == '*' || line[0] == 'G') {
 					syllable.type = 'golden';
 				} else if (line[0] == 'F') {
 					syllable.type = 'freestyle';
+				} else if (line[0] == 'R') {
+					syllable.type = 'rap';
 				}
 
 				// Increment the total beats count with the syllable beats
