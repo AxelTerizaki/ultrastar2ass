@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## 1.0.14
+## 1.0.15
 
 - Add note type 'R' (rap) and 'G' (golden) support
 
