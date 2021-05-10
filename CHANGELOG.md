@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.0.14
+
+- Add note type 'R' (rap) and 'G' (golden) support
+
 ## 1.0.13
 
 - Fixed some cases where the ultrastar lyrics file was malformed. Something the original game permits but we didn't (thanks @Aeden)
