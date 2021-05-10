@@ -1,4 +1,4 @@
-import { SyllabesConfig } from "./types";
+import { SyllabesConfig } from './types';
 
 export default class UltrastarParser {
 

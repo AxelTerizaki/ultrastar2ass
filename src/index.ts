@@ -3,7 +3,7 @@ import { asyncExists, asyncReadFile, clone, msToAss } from './utils';
 import UltrastarParser from './ultrastar';
 import stringify from 'ass-stringify';
 import { SyllabesConfig } from './types';
-const ass = require('./assTemplate');
+import ass = require('./assTemplate');
 
 function generateASSLine(line: any, styles: any, duet: boolean) {
 	const ASSLine = [];
@@ -30,7 +30,7 @@ function generateASSLine(line: any, styles: any, duet: boolean) {
 	return {
 		dialogue,
 		comment
-	}
+	};
 }
 
 function sortStartTime(a: any, b: any) {
