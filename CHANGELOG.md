@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.0.16
+- Fix New line mark when start and end are different
+
 ## 1.0.15
 
 - Add note type 'R' (rap) and 'G' (golden) support
