@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.0.17
+- Remove use of New line mark end, better start sentence without
+
 ## 1.0.16
 - Fix New line mark when start and end are different
 
