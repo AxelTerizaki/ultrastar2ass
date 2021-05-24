@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.0.18
+- Add whitespace before duration instead of after
+
 ## 1.0.17
 - Remove use of New line mark end, better start sentence without
 

@@ -9,7 +9,7 @@ function generateASSLine(line: any, styles: any, duet: boolean) {
 	const ASSLine = [];
 	let startMs = line.start;
 	const stopMs = line.end + 100;
-	line.syllables.forEach((syl: any) => ASSLine.push('{\\k' + Math.floor(syl.duration / 10) + '}' + syl.text));
+	line.syllables.forEach((syl: any) => ASSLine.push((syl.text.startsWith(' ') && ASSLine.length > 0 ? ' ' : '') + '{\\k' + Math.floor(syl.duration / 10) + '}' + syl.text.trim()));
 	const dialogue = clone(ass.dialogue);
 	const comment = clone(ass.dialogue);
 	dialogue.value.Start = msToAss(startMs - 900 < 0 ? 0 : startMs - 900);
