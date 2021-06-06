@@ -9,14 +9,19 @@ function generateASSLine(line: any, styles: any, duet: boolean) {
 	const ASSLine = [];
 	let startMs = line.start;
 	const stopMs = line.end + 100;
-	line.syllables.forEach((syl: any) => ASSLine.push((syl.text.startsWith(' ') && ASSLine.length > 0 ? ' ' : '') + '{\\k' + Math.floor(syl.duration / 10) + '}' + syl.text.trim()));
+	line.syllables.forEach((syl: any) => ASSLine.push(
+		(syl.text.startsWith(' ') && ASSLine.length > 0 ? ' ' : '')
+		+ '{\\k' + Math.floor(syl.duration / 10) + '}'
+		+ syl.text.trim()
+		+ (syl.text.endsWith(' ') && ASSLine.length > 0 ? ' ' : '')
+	));
 	const dialogue = clone(ass.dialogue);
 	const comment = clone(ass.dialogue);
 	dialogue.value.Start = msToAss(startMs - 900 < 0 ? 0 : startMs - 900);
 	comment.value.Start = msToAss(startMs);
 	dialogue.value.End = msToAss(stopMs);
 	comment.value.End = msToAss(stopMs);
-	dialogue.value.Text = '{\\k'+(startMs - 900 < 0 ? (900-startMs)/10 : 100) + ass.dialogueScript + ASSLine.join('');
+	dialogue.value.Text = '{\\k' + (startMs - 900 < 0 ? (900 - startMs) / 10 : 100) + ass.dialogueScript + ASSLine.join('');
 	dialogue.value.Effect = 'fx';
 	dialogue.value.Style = duet
 		? styles.body[2].value.Name
@@ -87,7 +92,7 @@ async function mainCLI() {
 
 	if (!await asyncExists(txtFile)) throw `File ${txtFile} does not exist`;
 	const txt = await asyncReadFile(txtFile, 'utf8');
-	return convertToASS(txt, {syllable_precision: true});
+	return convertToASS(txt, { syllable_precision: true });
 }
 
 if (require.main === module) mainCLI()

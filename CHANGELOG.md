@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.0.19
+- Re-add whitespace at end of syllable
+
 ## 1.0.18
 - Add whitespace before duration instead of after
 
