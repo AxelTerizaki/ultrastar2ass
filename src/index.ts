@@ -13,7 +13,7 @@ function generateASSLine(line: any, styles: any, duet: boolean) {
 		(syl.text.startsWith(' ') && ASSLine.length > 0 ? ' ' : '')
 		+ '{\\k' + Math.floor(syl.duration / 10) + '}'
 		+ syl.text.trim()
-		+ (syl.text.endsWith(' ') && ASSLine.length > 0 ? ' ' : '')
+		+ (syl.text.endsWith(' ') ? ' ' : '')
 	));
 	const dialogue = clone(ass.dialogue);
 	const comment = clone(ass.dialogue);

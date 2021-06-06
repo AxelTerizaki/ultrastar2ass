@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.0.20
+- Fix wrong condition for whitespace at end of syllable
+
 ## 1.0.19
 - Re-add whitespace at end of syllable
 
