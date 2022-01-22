@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.0.22
+- Fix rap lines conversion
+
+## 1.0.21
+- Fix carriage return for linux
+
 ## 1.0.20
 - Fix wrong condition for whitespace at end of syllable
 
