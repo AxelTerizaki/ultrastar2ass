@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.0.23
+- Update margins for style
+
 ## 1.0.22
 - Fix rap lines conversion
 

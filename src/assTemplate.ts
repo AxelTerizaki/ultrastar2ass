@@ -81,9 +81,9 @@ export const styles = {
 				'Outline': '1.5',
 				'Shadow': '0',
 				'Alignment': '8',
-				'MarginL': '10',
-				'MarginR': '10',
-				'MarginV': '10',
+				'MarginL': '0',
+				'MarginR': '0',
+				'MarginV': '20',
 				'Encoding': '1'
 			}
 		}
