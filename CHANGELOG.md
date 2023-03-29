@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.0.24
+- Do not try to make sentence without syllabes
+
 ## 1.0.23
 - Update margins for style
 
