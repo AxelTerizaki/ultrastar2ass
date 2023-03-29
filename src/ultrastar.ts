@@ -31,21 +31,21 @@ export default class UltrastarParser {
 	parse(file: string) {
 
 		// Let's parse the file line by line
-		var lines = file.replace(/\r+/g, '').split('\n');
+		const lines = file.replace(/\r+/g, '').split('\n');
 
-		var sentenceID = 1;			// Current sentence ID
-		var trackID = 1;			// Current track ID
-		var relative = false;		// Relative or absolute beats notation for the syllables
-		var beatsCount = 0;			// Count of the elapsed beats
-		var beatDuration = null;	// Duration of a beat (milliseconds)
-		var currentStart = null;	// Start of the current sentence (milliseconds)
-		var previousEnd = null;		// End of the previous sentence (milliseconds)
-		var syllables = [];			// Syllables list of the current sentence
+		let sentenceID = 1;			// Current sentence ID
+		let trackID = 1;			// Current track ID
+		let relative = false;		// Relative or absolute beats notation for the syllables
+		let beatsCount = 0;			// Count of the elapsed beats
+		let beatDuration = null;	// Duration of a beat (milliseconds)
+		let currentStart = null;	// Start of the current sentence (milliseconds)
+		let previousEnd = null;		// End of the previous sentence (milliseconds)
+		let syllables = [];			// Syllables list of the current sentence
 
 		// Parse each line of the file until the end (or a "E" line)
-		for (var i = 0; i < lines.length; i++) {
+		for (let i = 0; i < lines.length; i++) {
 			// Delete the trailing spaces
-			var line = lines[i].replace(/^\s*/, '');
+			const line = lines[i].replace(/^\s*/, '');
 
 			// Ignore the line if it's empty
 			if (line.replace(/\s*/g, '').length == 0) {
@@ -55,7 +55,7 @@ export default class UltrastarParser {
 			// Metadata line
 			if (line[0] == '#') {
 				// Regex parsing of the line
-				var matches = line.match(/(\w+):(.+)/);
+				let matches:string[] = line.match(/(\w+):(.+)/);
 
 				// Ignore the line if it's invalid
 				if (matches == null || matches.length == 0) {
@@ -65,8 +65,8 @@ export default class UltrastarParser {
 				// Split of the regex result
 				matches = matches[0].split(':');
 
-				var keyword: string = matches[0].toLowerCase();
-				var value: any = matches[1];
+				const keyword: string = matches[0].toLowerCase();
+				let value: any = matches[1];
 
 				// Float conversion of the BPM / GAP
 				if (keyword == 'bpm' || keyword == 'gap') {
@@ -104,7 +104,7 @@ export default class UltrastarParser {
 			if ((line == 'P2' || line == 'P 2' || line[0] == 'E') && syllables.length > 0) {
 
 				// Create a new sentence
-				var sentence = this.makeSentence(sentenceID, syllables, currentStart, null, previousEnd);
+				const sentence = this.makeSentence(sentenceID, syllables, currentStart, null, previousEnd);
 
 				if (currentStart != null) {
 					currentStart = null;
@@ -132,14 +132,14 @@ export default class UltrastarParser {
 			// Syllable line
 			if ([':', '*', 'F', 'R', 'G'].indexOf(line[0]) > -1) {
 				// Regex parsing of the line
-				var matches = line.match(/^[:*FRG] (-?\d+) (\d+) (-?\d+) (.+)/);
+				let matches:string[] = line.match(/^[:*FRG] (-?\d+) (\d+) (-?\d+) (.+)/);
 
 				// Ignore the line if it's invalid
 				if (matches == null || matches.length == 0) {
 					continue;
 				}
 
-				var syllable: any = {
+				const syllable: any = {
 					type: 'normal'
 				};
 
@@ -156,7 +156,7 @@ export default class UltrastarParser {
 					syllable.start = Math.floor(this.meta.gap + (beatsCount + parseInt(matches[0])) * beatDuration);
 				}
 
-				var matchesAfter = lines[i+1].replace(/^\s*/, '').match(/^[:*FRG-] (-?\d+)/);
+				const matchesAfter = lines[i+1].replace(/^\s*/, '').match(/^[:*FRG-] (-?\d+)/);
 				// Add the duration, end time, pitch
 				syllable.duration = Math.floor((matchesAfter ? (parseInt(matchesAfter[1])- parseInt(matches[0])) : parseInt(matches[1])) * beatDuration);
 				syllable.end = syllable.start + syllable.duration;
@@ -187,7 +187,7 @@ export default class UltrastarParser {
 			// New line mark
 			if (line[0].indexOf('-') > -1) {
 				// Regex parsing of the line
-				var matches = line.match(/^- ?(\d+)\s?(\d+)?/);
+				let matches:string[] = line.match(/^- ?(\d+)\s?(\d+)?/);
 
 				// Ignore the line if it's invalid
 				if (matches == null || matches.length == 0) {
@@ -201,7 +201,7 @@ export default class UltrastarParser {
 				} else {
 					matches = matches.splice(1);
 				}
-				var currentEnd = null;
+				let currentEnd = null;
 
 				// Add the end time of the sentence, with absolute or relative beats
 				if (!relative) {
@@ -218,7 +218,7 @@ export default class UltrastarParser {
 				}
                 
 				// Create a new sentence
-				var sentence = this.makeSentence(sentenceID, syllables, currentStart, currentEnd, previousEnd);
+				const sentence = this.makeSentence(sentenceID, syllables, currentStart, currentEnd, previousEnd);
 
 				if (currentStart != null) {
 					currentStart = null;
@@ -264,7 +264,7 @@ export default class UltrastarParser {
 	 * @param {number} previousEnd End time of the previous sentence
 	 */
 	private makeSentence(id: number, syllables: any[], start: number, end: number, previousEnd: number) {
-		var sentence: any = {
+		const sentence: any = {
 			id: id,
 			start: syllables[0].start,
 			end: syllables[syllables.length - 1].end
@@ -275,7 +275,7 @@ export default class UltrastarParser {
 			sentence.syllables = syllables;
 		} else {
 			sentence.text = '';
-			for (var j = 0; j < syllables.length; j++) {
+			for (let j = 0; j < syllables.length; j++) {
 				sentence.text += syllables[j].text;
 			}
 		}
