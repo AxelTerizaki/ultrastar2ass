@@ -185,7 +185,7 @@ export default class UltrastarParser {
 			}
 
 			// New line mark
-			if (line[0].indexOf('-') > -1) {
+			if (line[0].indexOf('-') > -1 && syllables.length > 0) {
 				// Regex parsing of the line
 				let matches:string[] = line.match(/^- ?(\d+)\s?(\d+)?/);
 
