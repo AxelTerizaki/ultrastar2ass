@@ -85,13 +85,22 @@ async function mainCLI() {
 	if (!process.argv[2]) {
 		throw `Ultrastar2ass - Convert Ultrastar karaoke to ASS file
 		Usage: ultrastar2ass myfile.txt
+		Options:
+			--encoding=input-file-encoding (default: utf8)
 		Output goes to stdout
 		`;
 	}
 	const txtFile = process.argv[2];
+	let encoding = 'utf8'
+	if (process.argv[3] && process.argv[3].startsWith('--encoding=')) {
+		encoding = process.argv[3].replace('--encoding=', '')
+		if (!['utf8', 'utf-8', 'utf16le', 'utf-16le', 'latin1'].includes(encoding)) {
+			throw 'Only utf8, utf16le, and latin1 encodings are supported.'
+		}
+	}
 
 	if (!await asyncExists(txtFile)) throw `File ${txtFile} does not exist`;
-	const txt = await asyncReadFile(txtFile, 'utf8');
+	const txt = await asyncReadFile(txtFile, encoding);
 	return convertToASS(txt, { syllable_precision: true });
 }
 

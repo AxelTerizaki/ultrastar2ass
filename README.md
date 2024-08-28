@@ -58,6 +58,7 @@ You can test code with the `txt` file included in the test directory :
 
 ```sh
 node dist/index.js test/jojo.txt
+node dist/index.js test/la_despedida.txt --encoding=latin1
 ```
 
 ## License
