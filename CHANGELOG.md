@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.1.0
+- Added `--encoding=` option to specify encoding output for the ASS files (thanks @louisroyer )
+
 ## 1.0.24
 - Do not try to make sentence without syllabes
 
