@@ -94,9 +94,6 @@ async function mainCLI() {
 	let encoding = 'utf8'
 	if (process.argv[3] && process.argv[3].startsWith('--encoding=')) {
 		encoding = process.argv[3].replace('--encoding=', '')
-		if (!['utf8', 'utf-8', 'utf16le', 'utf-16le', 'latin1'].includes(encoding)) {
-			throw 'Only utf8, utf16le, and latin1 encodings are supported.'
-		}
 	}
 
 	if (!await asyncExists(txtFile)) throw `File ${txtFile} does not exist`;
