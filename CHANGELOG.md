@@ -1,33 +1,47 @@
 # CHANGELOG
 
+## 1.1.2
+
+- Removed encoding checks to allow more weird encoding methods.
+
 ## 1.1.0
+
 - Added `--encoding=` option to specify encoding output for the ASS files (thanks @louisroyer )
 
 ## 1.0.24
+
 - Do not try to make sentence without syllabes
 
 ## 1.0.23
+
 - Update margins for style
 
 ## 1.0.22
+
 - Fix rap lines conversion
 
 ## 1.0.21
+
 - Fix carriage return for linux
 
 ## 1.0.20
+
 - Fix wrong condition for whitespace at end of syllable
 
 ## 1.0.19
+
 - Re-add whitespace at end of syllable
 
 ## 1.0.18
+
 - Add whitespace before duration instead of after
 
 ## 1.0.17
+
 - Remove use of New line mark end, better start sentence without
 
 ## 1.0.16
+
 - Fix New line mark when start and end are different
 
 ## 1.0.15
