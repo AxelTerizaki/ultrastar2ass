@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 1.1.3
+
+- Update default style
+
 ## 1.1.2
 
 - Removed encoding checks to allow more weird encoding methods.
