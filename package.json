@@ -23,12 +23,12 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://lab.shelter.moe/axelterizaki/ultrastar2ass/issues",
+    "url": "https://github.com/AxelTerizaki/ultrastar2ass/issues",
     "email": "axel@teri-chan.net"
   },
   "repository": {
     "type": "git",
-    "url": "https://lab.shelter.moe/axelterizaki/ultrastar2ass.git"
+    "url": "https://github.com/AxelTerizaki/ultrastar2ass.git"
   },
   "dependencies": {
     "ass-stringify": "^0.1.3"

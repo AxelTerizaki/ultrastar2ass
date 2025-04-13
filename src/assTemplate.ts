@@ -3,7 +3,7 @@ export const scriptInfo = {
 	body: [
 		{
 			type: 'comment',
-			value: 'Converted using ultrastar2ass : https://lab.shelter.moe/axelterizaki/ultrastar2ass'
+			value: 'Converted using ultrastar2ass : https://github.com/AxelTerizaki/ultrastar2ass'
 		},
 		{
 			key: 'Title',
